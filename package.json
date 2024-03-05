@@ -1,0 +1,18 @@
+{
+  "name": "quizzweb",
+  "version": "1.0.0",
+  "description": "Quizz web app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "npm test"
+  },
+  "author": "Nyanzey",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.1.0"
+  }
+}
