@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/bootstrap.css" rel="stylesheet">
+    <script src="bootstrap/bootstrap.js"></script>
+    <title>Create</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">QuizzWeb</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Create</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Online</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <img src="https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg" alt="Girl in a jacket" style="height: 40px; width: auto;">
+                <li class="nav-item">
+                    <a class="nav-link">Log in</a>
+                </li>
+                <li class="nav-item" style="display: none;">
+                    <a class="nav-link">Log out</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div style="width: 40%; border-style: solid; border-radius: 30px;" class="p-4 mx-auto h-auto mt-4 mb-4 shadow-lg">
+        <h1 class="text-center mt-4">Create a new quizz</h1>
+        <form>
+            <fieldset>
+              <div>
+                <label for="exampleInputEmail1" class="form-label mt-4">Quizz title</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+              </div>
+
+              <div>
+                <label for="formFile" class="form-label mt-4">Thumbnail image</label>
+                <input class="form-control" type="file" id="formFile">
+              </div>
+
+              <div>
+                <label for="exampleTextarea" class="form-label mt-4">Short description</label>
+                <textarea class="form-control" id="exampleTextarea" rows="2"></textarea>
+              </div>
+
+              <div>
+                <label for="exampleTextarea" class="form-label mt-4">Description</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-6 text-center mt-4 mb-2">
+                    Available tags
+                </div>
+                <div class="col-6 text-center mt-4 mb-2">
+                    Selected tags
+                </div>
+              </div>
+
+              <input type="text" class="form-control" id="tags" style="display: none;" value="quizz,">
+              <div class="row" style="height: 150px ;">
+                <div class="col-6 overflow-scroll">
+                    <div class="row text-center" id="availableTags">
+                        <div class="col-12 mb-2 tag" onclick="addTag(this)">
+                            Actions
+                        </div>
+                        <div class="col-12 mb-2 tag" onclick="addTag(this)">
+                            Amine
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 overflow-scroll">
+                    <div class="row text-center" id="yourTags">
+                        
+                    </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="customRange1" class="form-label mt-4">Number of questions</label>
+                <input type="range" class="form-range" id="questionSlider" min="1" max="30">
+                <h2 id="questionNumber"></h2>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-4">Next</button>
+              </div>
+          </form>
+    </div>
+    <script>
+        var slider = document.getElementById("questionSlider");
+        var output = document.getElementById("questionNumber");
+        output.innerHTML = slider.value; 
+
+        slider.oninput = function() {
+        output.innerHTML = this.value;
+        }
+
+        function updateTags(action, tag){
+            var tags = document.getElementById("tags");
+            if (action == "append")
+            {
+                tags.value = tags.value + tag + ",";
+            }
+            else
+            {
+                var listArray = tags.value.split(',');
+                var index = listArray.indexOf(tag);
+
+                if (index !== -1) {
+                    listArray.splice(index, 1);
+                }
+                tags.value = listArray.join(',');
+            }
+            console.log(tags.value);
+        }
+
+        function addTag(tag) {
+            var itemText = tag.textContent.trim();
+            if (itemText === "") {
+                alert("Please enter an item.");
+                return;
+            }
+            var list = document.getElementById("yourTags");
+
+            var listItem = document.createElement("div");
+            listItem.classList.add("col-12","mb-2","tag");
+            listItem.onclick = function(){
+                deleteItem(listItem);
+            }; 
+
+            listItem.textContent = itemText;
+            list.appendChild(listItem);
+
+            tag.parentNode.removeChild(tag);
+            updateTags(action="append", itemText);
+        }
+
+        function deleteItem(tag) {
+            var itemText = tag.textContent.trim();
+            
+            var list = document.getElementById("availableTags");
+
+            var listItem = document.createElement("div");
+            listItem.classList.add("col-12","mb-2","tag");
+            listItem.onclick = function(){
+                addTag(listItem);
+            }; 
+
+            listItem.textContent = itemText;
+            list.appendChild(listItem);
+            
+            tag.parentNode.removeChild(tag);
+            updateTags(action="remove", itemText);
+        }
+    </script>
+</body>
+</html>

@@ -12205,3 +12205,8 @@ table,
   transform: scale(1.05);
   box-shadow: 0 10px 20px #17a2b8, 0 4px 8px #17a2b8 !important;
 }
+
+.tag:hover{
+  color: white;
+  background-color: #4582ec;
+}
