@@ -3,9 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="bootstrap/bootstrap.css" rel="stylesheet">
+    <script src="bootstrap/bootstrap.js"></script>
+    <title>Questions</title>
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">QuizzWeb</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Create</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Online</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <img src="https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg" alt="Girl in a jacket" style="height: 40px; width: auto;">
+                <li class="nav-item">
+                    <a class="nav-link">Log in</a>
+                </li>
+                <li class="nav-item" style="display: none;">
+                    <a class="nav-link">Log out</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto m-4">
+            <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                <h3 class="card-header mb-2">Quizz title</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div style="width: 60%; border-style: solid; border-radius: 30px;" class="p-4 mx-auto h-auto mt-4 mb-4 shadow-lg">
+        <div class="row">
+            <div class="col-8">
+                <h1 class="mx-auto">Editing questions 1/10</h1>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-success mt-2 float-end">Add</button>
+            </div>
+        </div>
+        <form>
+            <div class="row">
+                <div class="col-6">
+                    <label for="thumbnail" class="form-label mt-4">Resource type</label>
+                    <div class="row mar offset-1">
+                        <div class="form-check col-4">
+                            <input class="form-check-input" type="radio" name="optionsSource" id="imageOpt" value="option1" checked="">
+                            <label class="form-check-label" for="image">Image</label>
+                        </div>
+        
+                        <div class="form-check col-4">
+                            <input class="form-check-input" type="radio" name="optionsSource" id="audioOpt" value="option2">
+                            <label class="form-check-label" for="audio">Audio</label>
+                        </div>
+        
+                        <div class="form-check col-4">
+                            <input class="form-check-input" type="radio" name="optionsSource" id="videoOpt" value="option3">
+                            <label class="form-check-label" for="video">Video</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="thumbnail" class="form-label mt-4">Resource</label>
+                        <input class="form-control" type="file" id="thumbnailImage">
+                    </div>
+                    <div>
+                        <label for="question" class="form-label mt-4">Question</label>
+                        <input type="text" class="form-control" id="question" placeholder="Question">
+                    </div>
+                    <label for="thumbnail" class="form-label mt-4">Answer type</label>
+                    <div class="row mar offset-1">
+                        <div class="form-check col-4">
+                            <input class="form-check-input" type="radio" name="optionsAnswer" id="imageOpt" value="option1" checked="">
+                            <label class="form-check-label" for="image">Multiple choice</label>
+                        </div>
+                        <div class="form-check col-4">
+                            <input class="form-check-input" type="radio" name="optionsAnswer" id="audioOpt" value="option2">
+                            <label class="form-check-label" for="audio">Text input</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    
+
+                    <div id="sliderSection">
+                        <label for="optionnum" class="form-label mt-4">Number of options</label>
+                        <input type="range" class="form-range" id="optionSlider" min="1" max="4">
+                        <h3 id="optionNumberValue"></h3>
+                    </div>
+
+                    <div class="row" id="optionSection">
+                        <div class="col-6">
+                            <label for="question" class="form-label mt-4">Option 1</label>
+                            <input type="text" class="form-control" name="answerOption" placeholder="Option">
+                        </div>
+                        <div class="col-6">
+                            <label for="question" class="form-label mt-4">Option 2</label>
+                            <input type="text" class="form-control" name="answerOption" placeholder="Option">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="question" class="form-label mt-4">Option 3</label>
+                            <input type="text" class="form-control" name="answerOption" placeholder="Option">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+
+        </form>
+    </div>
+   <script>
+        var slider = document.getElementById("optionSlider");
+        var output = document.getElementById("optionNumberValue");
+        output.innerHTML = slider.value; 
+
+        slider.oninput = function() {
+        output.innerHTML = this.value;
+        }
+
+        function checkAnswerRadio() {
+            var radioButtons = document.getElementsByName('optionsAnswer');
+            var sliderSection = document.getElementById("sliderSection");
+            var optionSection = document.getElementById("optionSection");
+            var state = false;
+            for (var i = 0; i < radioButtons.length; i++) {
+                if (radioButtons[i].checked)
+                {
+                    if (i == 1){state = true;}
+                    sliderSection.hidden = state;
+                    optionSection.hidden = state;
+                }
+            }
+        }
+
+        document.getElementById('optionSlider').addEventListener('input', function() {
+            var numInputs = this.value;
+            var container = document.getElementById('optionSection');
+            container.innerHTML = '';
+
+            for (var i = 0; i < numInputs; i++) {
+                var inputWrap = document.createElement('div');
+                var inputLabel = document.createElement('label');
+                var input = document.createElement('input');
+
+                inputWrap.classList.add("col-6");
+
+                inputLabel.htmlFor = "option";
+                inputLabel.classList.add("form-label","mt-4");
+                inputLabel.innerHTML = "Option " + (i + 1);
+
+                input.classList.add("form-control");
+                input.type = 'text';
+                input.name = 'answerOption' + (i + 1); // Naming convention for inputs
+                input.placeholder = 'Option'
+
+                inputWrap.appendChild(inputLabel);
+                inputWrap.appendChild(input);
+
+                container.appendChild(inputWrap);
+            }
+        });
+
+        setInterval(checkAnswerRadio, 500);
+   </script>
 </body>
 </html>

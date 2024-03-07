@@ -48,25 +48,24 @@
     <div style="width: 40%; border-style: solid; border-radius: 30px;" class="p-4 mx-auto h-auto mt-4 mb-4 shadow-lg">
         <h1 class="text-center mt-4">Create a new quizz</h1>
         <form>
-            <fieldset>
               <div>
-                <label for="exampleInputEmail1" class="form-label mt-4">Quizz title</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+                <label for="title" class="form-label mt-4">Quizz title</label>
+                <input type="text" class="form-control" id="quizzTitle" placeholder="Title">
               </div>
 
               <div>
-                <label for="formFile" class="form-label mt-4">Thumbnail image</label>
-                <input class="form-control" type="file" id="formFile">
+                <label for="thumbnail" class="form-label mt-4">Thumbnail image</label>
+                <input class="form-control" type="file" id="thumbnailImage">
               </div>
 
               <div>
-                <label for="exampleTextarea" class="form-label mt-4">Short description</label>
-                <textarea class="form-control" id="exampleTextarea" rows="2"></textarea>
+                <label for="shortdesc" class="form-label mt-4">Short description</label>
+                <textarea class="form-control" id="shortDescription" rows="2"></textarea>
               </div>
 
               <div>
-                <label for="exampleTextarea" class="form-label mt-4">Description</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                <label for="desc" class="form-label mt-4">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
               </div>
 
               <div class="row">
@@ -98,9 +97,9 @@
               </div>
 
               <div>
-                <label for="customRange1" class="form-label mt-4">Number of questions</label>
-                <input type="range" class="form-range" id="questionSlider" min="1" max="30">
-                <h2 id="questionNumber"></h2>
+                <label for="questionnum" class="form-label mt-4">Number of questions</label>
+                <input type="range" class="form-range" id="questionNumber" min="1" max="30">
+                <h2 id="questionNumberValue"></h2>
               </div>
 
               <div class="text-center">
@@ -109,8 +108,8 @@
           </form>
     </div>
     <script>
-        var slider = document.getElementById("questionSlider");
-        var output = document.getElementById("questionNumber");
+        var slider = document.getElementById("questionNumber");
+        var output = document.getElementById("questionNumberValue");
         output.innerHTML = slider.value; 
 
         slider.oninput = function() {

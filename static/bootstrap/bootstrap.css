@@ -108,7 +108,7 @@
   --bs-code-color: #e83e8c;
   --bs-highlight-color: #343a40;
   --bs-highlight-bg: #fcefdc;
-  --bs-border-width: 1px;
+  --bs-border-width: 3px;
   --bs-border-style: solid;
   --bs-border-color: #ddd;
   --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
@@ -12201,7 +12201,7 @@ table,
 
 /* my shit */
 
-.card:hover{
+.card-hoverable:hover{
   transform: scale(1.05);
   box-shadow: 0 10px 20px #17a2b8, 0 4px 8px #17a2b8 !important;
 }
